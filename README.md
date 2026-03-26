@@ -1,12 +1,12 @@
-# Geocoder
+# Maps
 
 A JavaScript web application that converts user-input addresses into geographic coordinates and displays the location on an interactive map.
 
 ## Features
 
-- Convert an address into latitude and longitude
+- Geocode an address to find its geographic location
 - Display results dynamically without page reload
-- Render an interactive map with a marker at the searched location
+- Render an interactive map fitted to the searched location
 - Handle user input via form submission
 
 ## Tech Stack
@@ -15,6 +15,7 @@ A JavaScript web application that converts user-input addresses into geographic 
 - Fetch API
 - OpenStreetMap (Nominatim API)
 - Leaflet.js (map rendering)
+- Bootstrap 5
 - HTML & CSS
 
 ## How It Works
@@ -23,9 +24,7 @@ A JavaScript web application that converts user-input addresses into geographic 
 2. A request is sent to the OpenStreetMap Nominatim API
 3. The API returns geographic coordinates (latitude & longitude)
 4. The app dynamically updates the UI:
-   - Displays the coordinates
-   - Renders a Leaflet map centered on the location
-   - Places a marker at the result
+   - Renders a Leaflet map fitted to the result's bounding box
 
 ## Implementation Note
 
