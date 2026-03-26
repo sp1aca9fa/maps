@@ -41,8 +41,8 @@ This alternative approach demonstrates flexibility in adapting technical solutio
 ## Setup
 
 ```bash
-git clone <your-repo-url>
-cd geocoder
+git clone https://github.com/sp1aca9fa/maps.git
+cd maps
 serve
 ```
 
