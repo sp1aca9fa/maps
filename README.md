@@ -43,11 +43,11 @@ This alternative approach demonstrates flexibility in adapting technical solutio
 ```bash
 git clone https://github.com/sp1aca9fa/maps.git
 cd maps
-serve
+npx serve
 ```
 
 Then open:
-http://localhost:8000
+http://localhost:3000
 
 ## Learnings
 
