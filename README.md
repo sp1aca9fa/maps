@@ -1,76 +1,62 @@
-## Background & Objectives
+# Geocoder
 
-In this exercise, we'll practise our API skills. Let's start with a `GET` request. Here we'll use the [Mapbox Geocoding API](https://www.mapbox.com/search/). We want to build a tool where we can input an address, hit a button, and get the **GPS Coordinates** back! As a cherry on top 🍒 we'll display a map as well.
+A JavaScript web application that converts user-input addresses into geographic coordinates and displays the location on an interactive map.
 
-<div class="text-center">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/frontend/mapbox_ajax_geocoder.gif" alt="Mapbox Geocoding demo" width="100%">
-</div>
+## Features
 
-## Specs
+- Convert an address into latitude and longitude
+- Display results dynamically without page reload
+- Render an interactive map with a marker at the searched location
+- Handle user input via form submission
 
-Start your local web server with:
+## Tech Stack
+
+- JavaScript (ES6)
+- Fetch API
+- OpenStreetMap (Nominatim API)
+- Leaflet.js (map rendering)
+- HTML & CSS
+
+## How It Works
+
+1. The user enters an address into a form
+2. A request is sent to the OpenStreetMap Nominatim API
+3. The API returns geographic coordinates (latitude & longitude)
+4. The app dynamically updates the UI:
+   - Displays the coordinates
+   - Renders a Leaflet map centered on the location
+   - Places a marker at the result
+
+## Implementation Note
+
+While the original challenge suggested using Mapbox, I chose to implement the solution using OpenStreetMap’s Nominatim API and Leaflet.
+
+This decision was made to:
+- Avoid requiring API keys or billing setup
+- Work with fully open and free geolocation tools
+- Gain a deeper understanding of how geocoding and map rendering can be combined independently
+
+This alternative approach demonstrates flexibility in adapting technical solutions while still achieving the same core functionality.
+
+## Setup
 
 ```bash
+git clone <your-repo-url>
+cd geocoder
 serve
 ```
 
-Open [`localhost:8000`](http://localhost:8000) in your browser.
+Then open:
+http://localhost:8000
 
-### Geocoding
+## Learnings
 
-First, you will need to create a Mapbox account and get an API key (it's free to sign up!) Then, read the [Mapbox Geocoding API documentation](https://docs.mapbox.com/api/search/geocoding/). It boils down to doing an HTTP `GET` request with an address as a query string parameter.
+- Making API requests with dynamic query parameters
+- Parsing and using JSON responses from external services
+- Handling form events and preventing page reloads
+- Integrating geocoding services with map rendering libraries
+- Adapting a solution by replacing suggested tools with alternatives
 
-```javascript
-'https://api.mapbox.com/search/geocode/v6/forward?q=Los%20Angeles&access_token=YOUR-API-KEY'
-```
+## Notes
 
-NOTE: The request to the Mapbox API will require your API key as one of the parameters in your request. You can find your key on your [account page](https://www.mapbox.com/account/) once you have created an account and signed in.
-
-Go ahead and check out the form already present in the `index.html` challenge boilerplate. It contains an `input` of type `"text"` where a user can type an address in, and an `input` of type `"submit"` to display a button.
-
-Use the `submit` event to catch the moment the form is posted by the user. That's when you'll want to trigger the API request to query the Mapbox Geocoding service using `fetch` (more on this in the next lecture).
-
-When you fetch data from an API, start by `console.log()`ing what you get back from Mapbox. It's a massive JSON! Now you've got that, figure out where the GPS coordinates are buried and display them on screen.
-
-Hint: Mapbox returns coordinates with longitude first, and latitude second!
-
-### (OPTIONAL) Displaying a map
-
-To display a Mapbox Map with a marker at the specified address, we'll use a second API, the [Mapbox JavaScript API](https://www.mapbox.com/mapbox-gl-js/api/).
-
-To use it, add these lines in the `head` of your HTML file, so you can use Mapbox's JavaScript and CSS for your map:
-
-```html
-<link href='https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.css' rel='stylesheet' />
-<script src='https://api.mapbox.com/mapbox-gl-js/v3.16.0/mapbox-gl.js'></script>
-```
-
-To add a map, you'll need an empty supporting HTML element. For instance:
-
-```html
-<div id="map" style="height: 300px; width: 600px"></div>
-```
-
-To build the map and add a marker to it, we'll add [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/install/).
-
-And then display a map:
-
-```javascript
-mapboxgl.accessToken = "yourApiKey"
-const map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v9",
-  center: [ -0.077, 51.533 ],
-  zoom: 12
-})
-```
-
-To add a marker to the map, if the variable `map` holds the `mapboxgl` object, you can run:
-
-```js
-new mapboxgl.Marker()
-  .setLngLat([ -0.077, 51.533 ])
-  .addTo(map)
-```
-
-Happy geocoding! 🌎 🌍 🌏
+This project is a solution to a bootcamp coding challenge and was adapted to use open-source geocoding and mapping tools instead of the originally suggested Mapbox stack.
