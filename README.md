@@ -57,4 +57,4 @@ Open in your browser: http://localhost:3000
 
 ## Notes
 
-This project is a solution to a bootcamp coding challenge and was adapted to use open-source geocoding and mapping tools instead of the originally suggested Mapbox stack.
+This project is a solution to a Le Wagon bootcamp coding challenge and was adapted to use open-source geocoding and mapping tools instead of the originally suggested Mapbox stack.
